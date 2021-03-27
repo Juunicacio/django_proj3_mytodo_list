@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from todo_app import views
+# to see images in the static folder
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,5 +29,15 @@ urlpatterns = [
 
     # Todo stuff
     path('', views.home, name='home'),
+    # to the user be able to create a new todo
+    path('createtodo/', views.createtodo, name='createtodo'),
     path('mytodos/', views.mytodos, name='mytodos'),
+    path('completed/', views.mycompletedtodos, name='mycompletedtodos'),
+    # taking a primary key for that specific todo
+    path('todo/<int:todo_pk>', views.updatetodo, name='updatetodo'),
+    path('todo/<int:todo_pk>/complete', views.completetodo, name='completetodo'),
+    path('todo/<int:todo_pk>/delete', views.deletetodo, name='deletetodo'),
+
+    # Draw stuff
+    path('draw/', views.draw, name='draw'),
 ]

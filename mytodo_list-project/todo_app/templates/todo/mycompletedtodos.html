@@ -2,14 +2,15 @@
 
 {% block content %}
 
-Mytodos page
+My Completed todos page
 <!--use an unordered list. Put list itens in there-->
 <ul>
     <!--use a for loop to loop through the todos-->
     {% for todo in todos %}
+    <br>
     <li>
         <!--To link each todo with the updatetodo page-->
-        <a href="{% url 'updatetodo' todo.id %}">
+        <!--<a href="{% url 'updatetodo' todo.id %}">-->
         <!--todo Title and if the todo is important-->
         {% if todo.important %}
         <b>
@@ -23,9 +24,16 @@ Mytodos page
         
         <!--if the todo has a Note-->
         {% if todo.note %}
-        - {{ todo.note }}
+        <br>
+        - Notes: {{ todo.note }}
         {% endif %}
-        </a>
+
+        <br>
+
+        <!--show the completed date -->
+        <b>Completed at: </b>{{ todo.completedAt|date:'j M Y H:i' }}
+
+        <!--</a>-->
     </li>
     {% endfor %}
 </ul>

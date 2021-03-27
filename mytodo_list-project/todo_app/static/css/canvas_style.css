@@ -1,0 +1,8 @@
+#graph {
+    max-height: 100px;
+    max-width: 80px;
+}
+
+#canvas {
+    border: 2px solid black;
+}

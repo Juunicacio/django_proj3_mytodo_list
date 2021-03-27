@@ -1,20 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- to add a static folder in the place of an assets folder, in the beginnin of the page write
+    {% load static %}. and where you put the href="assets/css... put "{% static 'css/all.css' %}" -->
+    <!-- Font Awesome -->
+    <!-- <link rel="stylesheet" href="{% static 'css/all.css' %}"> -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <!-- Canvas -->
+    <link rel="stylesheet" href="{% static 'css/canvas_style.css' %}">
+    <!-- Custom -->
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
+    <!-- Lightbox  -->
+    <!-- <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}"> -->
 
-{% if user.is_authenticated %}
+    <title>ToDos</title>
+</head>
+<body>
+    <!-- Navbar-->
+    {% include 'todo/_navbar.html' %}
 
-Logged In as {{ user.username }}
+    {% if user.is_authenticated %}
 
-<form action="{% url 'logoutuser' %}" method="POST">
-    {% csrf_token %}
-    <button type="submit">Logout</button>
-</form>
+    Logged In as {{ user.username }}
+    <!-- This part bellow is now in the _navbar.html
+    <br>
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'createtodo' %}">Create</a>
+    <a href="{% url 'mytodos' %}">My ToDos</a>
+    <a href="{% url 'mycompletedtodos' %}">Completed ToDos</a>
+    -->
+    <br>
 
-{% else %}
+    <form action="{% url 'logoutuser' %}" method="POST">
+        {% csrf_token %}
+        <br>
+        <button type="submit">Logout</button>
+    </form>
+    
+    <!--
+    {% else %}
 
-<a href="{% url 'signupuser' %}">Sign Up</a>
-<a href="{% url 'loginuser' %}">Login</a>
+    <a href="{% url 'signupuser' %}">Sign Up</a>
+    <a href="{% url 'loginuser' %}">Login</a>
 
-{% endif %}
-<br>
-<br>
+    {% endif %}
+    <br>
+    <br>
+    -->
 
-{% block content %} {% endblock %}
+    {% block content %} {% endblock %}
+
+    <!-- Javascripts -->
+    <!-- <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script> -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/canvas.js' %}"></script>
+    <!-- <script src="{% static 'js/main.js' %}"></script> -->
+
+</body>
+</html>
